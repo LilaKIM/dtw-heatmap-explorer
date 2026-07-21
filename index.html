@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Exploration des représentations tonales dans les modèles auto-supervisés de la parole">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Exploration des représentations tonales dans les modèles auto-supervisés de la parole" name="description"/>
 <title>DTW Representation Explorer</title>
 <style>
 :root {
@@ -359,197 +360,331 @@ footer {
     padding:23px;
   }
 }
+
+
+/* Improved scientific explanation layout */
+.figure-flow {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 68px minmax(0,1fr);
+  gap:18px;
+  align-items:stretch;
+  margin-bottom:38px;
+}
+.figure-flow .preview-card {
+  height:100%;
+}
+.figure-flow .preview-card img {
+  aspect-ratio:auto;
+  height:360px;
+  object-fit:contain;
+  padding:14px;
+}
+.flow-arrow {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+  text-align:center;
+}
+.flow-arrow .arrow-line {
+  position:relative;
+  width:100%;
+  height:2px;
+  background:linear-gradient(90deg, rgba(31,111,235,.2), var(--blue));
+}
+.flow-arrow .arrow-line::after {
+  content:"";
+  position:absolute;
+  right:-1px;
+  top:50%;
+  width:11px;
+  height:11px;
+  border-top:2px solid var(--blue);
+  border-right:2px solid var(--blue);
+  transform:translateY(-50%) rotate(45deg);
+}
+.flow-arrow span {
+  margin-top:12px;
+  font-size:.8rem;
+  font-weight:750;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+.explanation-block {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:24px;
+}
+.explanation-block .prose {
+  max-width:none;
+}
+.correspondence-panel {
+  padding:28px;
+  border:1px solid #c9ddff;
+  border-radius:18px;
+  background:var(--blue-soft);
+}
+.correspondence-panel h3 {
+  margin:0 0 8px;
+}
+.correspondence-panel > p {
+  margin:0 0 20px;
+  color:var(--muted);
+}
+.mapping {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.mapping-row {
+  grid-template-columns:1fr;
+  gap:8px;
+  text-align:center;
+}
+.mapping-row span:nth-child(2) {
+  transform:rotate(90deg);
+}
+.mapping-row span:last-child {
+  color:var(--muted);
+  font-size:.9rem;
+}
+.figure-badge {
+  display:inline-flex;
+  align-items:center;
+  padding:4px 9px;
+  margin-bottom:8px;
+  border-radius:999px;
+  background:var(--blue-soft);
+  color:var(--blue);
+  font-size:.75rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.preview-card figcaption strong {
+  font-size:1.08rem;
+}
+@media(max-width:900px) {
+  .figure-flow {
+    grid-template-columns:1fr;
+  }
+  .flow-arrow {
+    min-height:58px;
+  }
+  .flow-arrow .arrow-line {
+    width:2px;
+    height:44px;
+    background:linear-gradient(180deg, rgba(31,111,235,.2), var(--blue));
+  }
+  .flow-arrow .arrow-line::after {
+    right:auto;
+    left:50%;
+    top:auto;
+    bottom:-1px;
+    transform:translateX(-50%) rotate(135deg);
+  }
+  .flow-arrow span {
+    margin-top:8px;
+  }
+  .mapping {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:560px) {
+  .figure-flow .preview-card img {
+    height:260px;
+  }
+  .mapping {
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 <body>
-
 <nav class="site-nav">
-  <div class="nav-inner">
-    <a class="brand" href="index.html">DTW Representation Explorer</a>
-    <div class="nav-links">
-      <a href="#introduction">Introduction</a>
-      <!-- <a href="#visualisations">Visualisations</a> -->
-      <a class="nav-main" href="explorer.html">Ouvrir l’explorateur</a>
-    </div>
-  </div>
+<div class="nav-inner">
+<a class="brand" href="index.html">DTW Representation Explorer</a>
+<div class="nav-links">
+<a href="#introduction">Introduction</a>
+<!-- <a href="#visualisations">Visualisations</a> -->
+<a class="nav-main" href="explorer.html">Ouvrir l’explorateur</a>
+</div>
+</div>
 </nav>
-
 <header class="hero">
-  <div class="hero-inner">
-    <div>
-      <span class="eyebrow">Visualisation scientifique interactive</span>
-      <h1>DTW Representation Explorer</h1>
-      <p class="hero-subtitle">Exploration des représentations tonales dans les modèles auto-supervisés de la parole</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="explorer.html">
+<div class="hero-inner">
+<div>
+<span class="eyebrow">Visualisation scientifique interactive</span>
+<h1>DTW Representation Explorer</h1>
+<p class="hero-subtitle">Exploration des représentations tonales dans les modèles auto-supervisés de la parole</p>
+<div class="hero-actions">
+<a class="button button-primary" href="explorer.html">
           Explorer les résultats
         </a>
-        <a class="button button-secondary" href="#introduction">
+<a class="button button-secondary" href="#introduction">
           Comprendre les figures
         </a>
-      </div>
-    </div>
-
-    <aside class="hero-panel">
-      <h2>Ce que l’interface permet d’examiner</h2>
-      <div class="metric-grid">
-        <div class="metric">
-          <strong>Modèles</strong>
-          <span>Comparaison des architectures et des représentations</span>
-        </div>
-        <div class="metric">
-          <strong>Couches</strong>
-          <span>Évolution des distances dans la profondeur du réseau</span>
-        </div>
-        <div class="metric">
-          <strong>Tokens</strong>
-          <span>Paires de formes erronées et corrigées</span>
-        </div>
-        <div class="metric">
-          <strong>Segments</strong>
-          <span>Segmentation tonale ou temporelle uniforme</span>
-        </div>
-      </div>
-    </aside>
-  </div>
+</div>
+</div>
+<aside class="hero-panel">
+<h2>Ce que l’interface permet d’examiner</h2>
+<div class="metric-grid">
+<div class="metric">
+<strong>Modèles</strong>
+<span>Comparaison des architectures et des représentations</span>
+</div>
+<div class="metric">
+<strong>Couches</strong>
+<span>Évolution des distances dans la profondeur du réseau</span>
+</div>
+<div class="metric">
+<strong>Tokens</strong>
+<span>Paires de formes erronées et corrigées</span>
+</div>
+<div class="metric">
+<strong>Segments</strong>
+<span>Segmentation tonale ou temporelle uniforme</span>
+</div>
+</div>
+</aside>
+</div>
 </header>
-
 <main>
-  <section class="section" id="introduction">
-    <div class="section-heading">
-      <p class="kicker">Introduction</p>
-      <h2>Lire conjointement les deux niveaux de visualisation</h2>
-      <p class="lead">
+<section class="section" id="introduction"><div class="section-heading">
+<p class="kicker">Introduction</p>
+<h2>Lire conjointement les deux niveaux de visualisation</h2>
+<p class="lead">
         Les figures représentent les mêmes correspondances segmentaires,
         mais sous deux perspectives complémentaires.
       </p>
-    </div>
-    <div class="preview-grid">
-    
-    <figure class="preview-card">
-      <a href="ex1.png" target="_blank" rel="noopener">
-        <img src="ex1.png" alt="Figure 1 — Distances entre tous les segments à une couche donnée">
-      </a>
-      <figcaption>
-        <strong>Figure 1 — Distances entre tous les segments à une couche donnée</strong>
-        <span class="caption-detail">
-          La diagonale T1–T1, T2–T2, T3–T3 et T4–T4 fournit les valeurs reprises dans la figure suivante.
-        </span>
-      </figcaption>
-    </figure>
-    
-    <figure class="preview-card">
-      <a href="ex2.png" target="_blank" rel="noopener">
-        <img src="ex2.png" alt="Figure 2 — Évolution des correspondances diagonales au fil des couches">
-      </a>
-      <figcaption>
-        <strong>Figure 2 — Évolution des correspondances diagonales au fil des couches</strong>
-        <span class="caption-detail">
-          La première colonne reprend les valeurs diagonales de la figure 1 pour la couche 0 ; les colonnes suivantes montrent leur évolution dans les autres couches.
-        </span>
-      </figcaption>
-    </figure>
-    
-  </div>
-
-    <div class="intro-grid">
-      <article class="prose">
-        <p>
-          La première heatmap présente, pour une couche donnée du modèle,
-          les distances moyennes calculées le long du chemin DTW entre les
-          segments de la forme erronée et ceux de la forme corrigée. La
-          diagonale met en relation les positions tonales correspondantes :
-          T1 avec T1, T2 avec T2, T3 avec T3 et T4 avec T4.
-        </p>
-
-        <p>
-          Les valeurs situées sur cette diagonale sont ensuite reprises dans
-          la heatmap « positions tonales × couches » (figure 2). La première colonne de
-          cette seconde figure correspond ainsi à la diagonale observée pour
-          la couche 0 dans la première figure. Les colonnes suivantes
-          présentent exactement les mêmes correspondances pour les couches
-          successives du modèle.
-        </p>
-
-        <p>
-          La première visualisation permet donc d’examiner en détail
-          l’ensemble des appariements entre segments à une couche précise,
-          tandis que la seconde isole les correspondances diagonales et suit
-          leur évolution dans la profondeur du réseau.
-        </p>
-      </article>
-
-      <aside class="callout">
-        <h3>Correspondance entre les figures</h3>
-        <p>
-          Diagonale de la heatmap segment × segment à la couche 0 :
-        </p>
-        <div class="mapping">
-          <div class="mapping-row"><span>T1–T1</span><span>→</span><span>ligne T1, colonne 0</span></div>
-          <div class="mapping-row"><span>T2–T2</span><span>→</span><span>ligne T2, colonne 0</span></div>
-          <div class="mapping-row"><span>T3–T3</span><span>→</span><span>ligne T3, colonne 0</span></div>
-          <div class="mapping-row"><span>T4–T4</span><span>→</span><span>ligne T4, colonne 0</span></div>
-        </div>
-        
-      </aside>
-    </div>
-  </section>
-
-
-  <section class="section">
-    <div class="section-heading">
-      <p class="kicker">Exploration</p>
-      <h2>Une interface pensée pour la comparaison</h2>
-    </div>
-
-    <div class="feature-grid">
-      <article class="feature">
-        <span class="feature-number">1</span>
-        <h3>Comparer les modèles</h3>
-        <p>
+</div>
+<div class="figure-flow">
+<figure class="preview-card">
+<a href="ex1.png" rel="noopener" target="_blank">
+<img alt="Heatmap des distances entre segments à la couche 0" src="ex1.png"/>
+</a>
+<figcaption>
+<span class="figure-badge">Figure 1</span>
+<strong>Heatmap segment × segment à une couche donnée</strong>
+<span class="caption-detail">
+        La diagonale T1–T1, T2–T2, T3–T3 et T4–T4 contient les valeurs
+        retenues pour la visualisation suivante.
+      </span>
+</figcaption>
+</figure>
+<div aria-label="Les valeurs diagonales de la figure 1 sont reportées dans la figure 2" class="flow-arrow">
+<div class="arrow-line"></div>
+<span>Extraction de la diagonale</span>
+</div>
+<figure class="preview-card">
+<a href="ex2.png" rel="noopener" target="_blank">
+<img alt="Évolution des correspondances diagonales au fil des couches" src="ex2.png"/>
+</a>
+<figcaption>
+<span class="figure-badge">Figure 2</span>
+<strong>Évolution des correspondances diagonales au fil des couches</strong>
+<span class="caption-detail">
+        La première colonne reprend les valeurs de la diagonale de la
+        figure 1 pour la couche 0.
+      </span>
+</figcaption>
+</figure>
+</div>
+<div class="explanation-block">
+<article class="prose">
+<h3>Comment lire ces figures ?</h3>
+<p>
+      La première heatmap présente, pour une couche donnée du modèle, les
+      distances moyennes calculées le long du chemin DTW entre les segments
+      de la forme erronée et ceux de la forme corrigée. La diagonale met en
+      relation les positions tonales correspondantes : T1 avec T1,
+      T2 avec T2, T3 avec T3 et T4 avec T4.
+    </p>
+<p>
+      Les valeurs situées sur cette diagonale sont ensuite reprises dans la
+      heatmap « positions tonales × couches » de la figure 2.
+      La première colonne de cette seconde figure correspond ainsi à la
+      diagonale observée pour la couche 0 dans la première figure. Les
+      colonnes suivantes présentent les mêmes correspondances pour les
+      couches successives du modèle.
+    </p>
+<p>
+      La figure 1 permet donc d’examiner l’ensemble des appariements entre
+      segments à une couche précise, tandis que la figure 2 isole les
+      correspondances diagonales et suit leur évolution dans la profondeur
+      du réseau.
+    </p>
+</article>
+<aside class="correspondence-panel">
+<h3>Correspondance entre les figures</h3>
+<p>
+      Chaque cellule diagonale de la figure 1 devient une ligne de la
+      première colonne de la figure 2.
+    </p>
+<div class="mapping">
+<div class="mapping-row">
+<span>T1–T1</span><span>→</span><span>ligne T1, couche 0</span>
+</div>
+<div class="mapping-row">
+<span>T2–T2</span><span>→</span><span>ligne T2, couche 0</span>
+</div>
+<div class="mapping-row">
+<span>T3–T3</span><span>→</span><span>ligne T3, couche 0</span>
+</div>
+<div class="mapping-row">
+<span>T4–T4</span><span>→</span><span>ligne T4, couche 0</span>
+</div>
+</div>
+</aside>
+</div>
+</section>
+<section class="section">
+<div class="section-heading">
+<p class="kicker">Exploration</p>
+<h2>Une interface pensée pour la comparaison</h2>
+</div>
+<div class="feature-grid">
+<article class="feature">
+<span class="feature-number">1</span>
+<h3>Comparer les modèles</h3>
+<p>
           Afficher côte à côte les heatmaps produites par plusieurs modèles
           de représentation de la parole.
         </p>
-      </article>
-
-      <article class="feature">
-        <span class="feature-number">2</span>
-        <h3>Suivre les couches</h3>
-        <p>
+</article>
+<article class="feature">
+<span class="feature-number">2</span>
+<h3>Suivre les couches</h3>
+<p>
           Observer comment les distances entre positions tonales évoluent
           depuis les premières couches jusqu’aux couches profondes.
         </p>
-      </article>
-
-      <article class="feature">
-        <span class="feature-number">3</span>
-        <h3>Filtrer les résultats</h3>
-        <p>
+</article>
+<article class="feature">
+<span class="feature-number">3</span>
+<h3>Filtrer les résultats</h3>
+<p>
           Rechercher une paire de tokens et sélectionner les segmentations
           pertinentes pour l’analyse.
         </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="final-cta">
-      <p class="kicker" style="color:#9cc9ff">Galerie interactive</p>
-      <h2>Accéder à l’ensemble des résultats</h2>
-      <p>
+</article>
+</div>
+</section>
+<section class="section">
+<div class="final-cta">
+<p class="kicker" style="color:#9cc9ff">Galerie interactive</p>
+<h2>Accéder à l’ensemble des résultats</h2>
+<p>
         L’explorateur rassemble toutes les figures générées et permet de les
         consulter, de les agrandir et de les comparer.
       </p>
-      <a class="button button-primary" href="explorer.html">
+<a class="button button-primary" href="explorer.html">
         Ouvrir le DTW Representation Explorer
       </a>
-    </div>
-  </section>
+</div>
+</section>
 </main>
-
 <footer>
   DTW Representation Explorer · Lila Kim
 </footer>
-
 </body>
 </html>
