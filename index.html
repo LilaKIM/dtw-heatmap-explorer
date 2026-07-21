@@ -260,9 +260,19 @@ h2 {
 }
 .preview-card a:hover img { transform:scale(1.015); }
 .preview-card figcaption {
-  padding:15px 18px;
+  padding:17px 19px;
   color:var(--muted);
   border-top:1px solid var(--line);
+}
+.preview-card figcaption strong {
+  display:block;
+  margin-bottom:7px;
+  color:var(--ink);
+}
+.caption-detail {
+  display:block;
+  font-size:.93rem;
+  line-height:1.55;
 }
 .preview-placeholder {
   grid-column:1/-1;
@@ -463,24 +473,35 @@ footer {
         <p class="kicker">Aperçu</p>
         <h2>Deux visualisations complémentaires</h2>
         <p class="lead">
-          Cliquez sur une figure ou ouvrez l’explorateur complet pour filtrer
-          les résultats par modèle, paire de tokens et segmentation.
+          Les deux figures ci-dessous illustrent directement la relation entre
+          la heatmap segment × segment et la heatmap positions tonales × couches.
+          Cliquez sur une figure pour l’ouvrir en taille réelle.
         </p>
       </div>
       <div class="preview-grid">
         
         <figure class="preview-card">
-          <a href="explorer.html">
-            <img src="images/data2vec-audio-large-ft__SUBSTITUTION__SUB_B_H_FINAL__tone_by_pattern__ERR_MBMB__CORR_MBMH__69e10d72796f.png" alt="Correspondances segmentaires à une couche donnée">
+          <a href="ex1.png" target="_blank" rel="noopener">
+            <img src="ex1.png" alt="Figure 1 — Distances entre tous les segments à une couche donnée">
           </a>
-          <figcaption>Correspondances segmentaires à une couche donnée</figcaption>
+          <figcaption>
+            <strong>Figure 1 — Distances entre tous les segments à une couche donnée</strong>
+            <span class="caption-detail">
+              La diagonale T1–T1, T2–T2, T3–T3 et T4–T4 fournit les valeurs reprises dans la figure suivante.
+            </span>
+          </figcaption>
         </figure>
         
         <figure class="preview-card">
-          <a href="explorer.html">
-            <img src="images/wavlm-base-plus__SUBSTITUTION__SUB_H_M_FINAL__uniform_10_by_pattern__ERR_MMMH__CORR_MMMM__4e0444fb0242.png" alt="Évolution des positions tonales au fil des couches">
+          <a href="ex2.png" target="_blank" rel="noopener">
+            <img src="ex2.png" alt="Figure 2 — Évolution des correspondances diagonales au fil des couches">
           </a>
-          <figcaption>Évolution des positions tonales au fil des couches</figcaption>
+          <figcaption>
+            <strong>Figure 2 — Évolution des correspondances diagonales au fil des couches</strong>
+            <span class="caption-detail">
+              La première colonne reprend les valeurs diagonales de la figure 1 pour la couche 0 ; les colonnes suivantes montrent leur évolution dans les autres couches.
+            </span>
+          </figcaption>
         </figure>
         
       </div>
