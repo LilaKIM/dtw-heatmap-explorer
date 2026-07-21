@@ -14,15 +14,30 @@
 
 <main class="explorer-main">
   <div class="explorer-heading">
-    <div><p class="eyebrow">Galerie interactive</p><h1>Explorer les heatmaps</h1><p id="summary">Chargement…</p></div>
-    <button id="reset" class="button secondary">Réinitialiser</button>
+    <div>
+      <p class="eyebrow">Galerie interactive</p>
+      <h1>Explorer les heatmaps</h1>
+      <p id="summary">Chargement…</p>
+    </div>
+    <div class="heading-actions">
+      <button id="compareSegmentations" class="button primary" disabled>Comparer les segmentations</button>
+      <button id="reset" class="button secondary">Réinitialiser</button>
+    </div>
   </div>
 
+  <section class="stats-grid" aria-label="Statistiques de la galerie">
+    <article><strong id="statFigures">0</strong><span>figures</span></article>
+    <article><strong id="statModels">0</strong><span>modèles</span></article>
+    <article><strong id="statPatterns">0</strong><span>patterns</span></article>
+    <article><strong id="statSegmentations">0</strong><span>segmentations</span></article>
+  </section>
+
   <section class="filters">
-    <label>Recherche<input id="search" type="search" placeholder="Nom du fichier…"></label>
+    <label>Recherche<input id="search" type="search" placeholder="Nom, pattern, modèle…"></label>
     <label>Modèle<select id="model"><option value="">Tous</option></select></label>
-    <label>Token<select id="token"><option value="">Tous</option></select></label>
-    <label>Segmentation<select id="segmentation"><option value="">Toutes</option></select></label>
+    <label>Pattern ERR / CORR<select id="pattern"><option value="">Tous</option></select></label>
+    <label>Type de segmentation<select id="segmentation"><option value="">Tous</option></select></label>
+    <label>Nombre de morceaux<select id="segmentCount"><option value="">Tous</option></select></label>
     <label>Couche<select id="layer"><option value="">Toutes</option></select></label>
   </section>
 
@@ -37,6 +52,14 @@
 
 <dialog id="viewer" class="modal"><button class="close" id="closeViewer">×</button><img id="viewerImage"><h2 id="viewerTitle"></h2></dialog>
 <dialog id="comparison" class="modal"><button class="close" id="closeComparison">×</button><div id="comparisonGrid" class="comparison-grid"></div></dialog>
+<dialog id="segmentationComparison" class="modal segmentation-modal">
+  <button class="close" id="closeSegmentationComparison">×</button>
+  <div class="modal-heading">
+    <p class="eyebrow">Comparaison automatique</p>
+    <h2 id="segmentationComparisonTitle">Comparaison des segmentations</h2>
+  </div>
+  <div id="segmentationComparisonGrid" class="segmentation-comparison-grid"></div>
+</dialog>
 
 <script src="app.js"></script>
 </body>
