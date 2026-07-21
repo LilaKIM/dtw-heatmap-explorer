@@ -368,7 +368,7 @@ footer {
     <a class="brand" href="index.html">DTW Representation Explorer</a>
     <div class="nav-links">
       <a href="#introduction">Introduction</a>
-      <a href="#visualisations">Visualisations</a>
+      <!-- <a href="#visualisations">Visualisations</a> -->
       <a class="nav-main" href="explorer.html">Ouvrir l’explorateur</a>
     </div>
   </div>
@@ -424,6 +424,33 @@ footer {
         mais sous deux perspectives complémentaires.
       </p>
     </div>
+    <div class="preview-grid">
+    
+    <figure class="preview-card">
+      <a href="ex1.png" target="_blank" rel="noopener">
+        <img src="ex1.png" alt="Figure 1 — Distances entre tous les segments à une couche donnée">
+      </a>
+      <figcaption>
+        <strong>Figure 1 — Distances entre tous les segments à une couche donnée</strong>
+        <span class="caption-detail">
+          La diagonale T1–T1, T2–T2, T3–T3 et T4–T4 fournit les valeurs reprises dans la figure suivante.
+        </span>
+      </figcaption>
+    </figure>
+    
+    <figure class="preview-card">
+      <a href="ex2.png" target="_blank" rel="noopener">
+        <img src="ex2.png" alt="Figure 2 — Évolution des correspondances diagonales au fil des couches">
+      </a>
+      <figcaption>
+        <strong>Figure 2 — Évolution des correspondances diagonales au fil des couches</strong>
+        <span class="caption-detail">
+          La première colonne reprend les valeurs diagonales de la figure 1 pour la couche 0 ; les colonnes suivantes montrent leur évolution dans les autres couches.
+        </span>
+      </figcaption>
+    </figure>
+    
+  </div>
 
     <div class="intro-grid">
       <article class="prose">
@@ -437,7 +464,7 @@ footer {
 
         <p>
           Les valeurs situées sur cette diagonale sont ensuite reprises dans
-          la heatmap « positions tonales × couches ». La première colonne de
+          la heatmap « positions tonales × couches » (figure 2). La première colonne de
           cette seconde figure correspond ainsi à la diagonale observée pour
           la couche 0 dans la première figure. Les colonnes suivantes
           présentent exactement les mêmes correspondances pour les couches
@@ -463,50 +490,11 @@ footer {
           <div class="mapping-row"><span>T3–T3</span><span>→</span><span>ligne T3, colonne 0</span></div>
           <div class="mapping-row"><span>T4–T4</span><span>→</span><span>ligne T4, colonne 0</span></div>
         </div>
+        
       </aside>
     </div>
   </section>
 
-  <section class="preview-section" id="visualisations">
-    <div class="section">
-      <div class="section-heading">
-        <p class="kicker">Aperçu</p>
-        <h2>Deux visualisations complémentaires</h2>
-        <p class="lead">
-          Les deux figures ci-dessous illustrent directement la relation entre
-          la heatmap segment × segment et la heatmap positions tonales × couches.
-          Cliquez sur une figure pour l’ouvrir en taille réelle.
-        </p>
-      </div>
-      <div class="preview-grid">
-        
-        <figure class="preview-card">
-          <a href="ex1.png" target="_blank" rel="noopener">
-            <img src="ex1.png" alt="Figure 1 — Distances entre tous les segments à une couche donnée">
-          </a>
-          <figcaption>
-            <strong>Figure 1 — Distances entre tous les segments à une couche donnée</strong>
-            <span class="caption-detail">
-              La diagonale T1–T1, T2–T2, T3–T3 et T4–T4 fournit les valeurs reprises dans la figure suivante.
-            </span>
-          </figcaption>
-        </figure>
-        
-        <figure class="preview-card">
-          <a href="ex2.png" target="_blank" rel="noopener">
-            <img src="ex2.png" alt="Figure 2 — Évolution des correspondances diagonales au fil des couches">
-          </a>
-          <figcaption>
-            <strong>Figure 2 — Évolution des correspondances diagonales au fil des couches</strong>
-            <span class="caption-detail">
-              La première colonne reprend les valeurs diagonales de la figure 1 pour la couche 0 ; les colonnes suivantes montrent leur évolution dans les autres couches.
-            </span>
-          </figcaption>
-        </figure>
-        
-      </div>
-    </div>
-  </section>
 
   <section class="section">
     <div class="section-heading">
