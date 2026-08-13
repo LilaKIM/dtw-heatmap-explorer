@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DTW Representation Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">DTW Representation Explorer</a>
+  <nav><a href="#intro">Introduction</a><a class="nav-button" href="explorer.html">Ouvrir l’explorateur</a></nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Analyse des représentations de la parole</p>
+      <h1>Explorer l’évolution des distances DTW dans les couches du modèle</h1>
+      <p>Une interface interactive pour consulter, filtrer et comparer les heatmaps.</p>
+      <a class="button primary" href="explorer.html">Explorer les figures</a>
+    </div>
+  </section>
+
+  <section class="section" id="intro">
+    <div class="section-heading">
+      <p class="eyebrow">Lecture des visualisations</p>
+      <h2>Du DTW segment × segment à l’évolution par couche</h2>
+    </div>
+
+    <div class="figure-flow">
+      <figure class="preview-card">
+        <a href="ex1.png" target="_blank"><img src="ex1.png" alt="Heatmap segment par segment"></a>
+        <figcaption><b>Figure 1 — Heatmap segment × segment</b><span>La diagonale T1–T1, T2–T2, T3–T3 et T4–T4 fournit les valeurs retenues.</span></figcaption>
+      </figure>
+
+      <div class="flow-arrow"><span>→</span><small>Extraction de la diagonale</small></div>
+
+      <figure class="preview-card">
+        <a href="ex2.png" target="_blank"><img src="ex2.png" alt="Heatmap positions tonales par couches"></a>
+        <figcaption><b>Figure 2 — Positions tonales × couches</b><span>Les mêmes correspondances sont suivies dans les couches successives.</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="explanation">
+      <article>
+        <h3>Comment lire ces figures ?</h3>
+        <p>La première heatmap montre, pour une couche donnée, les distances moyennes calculées le long du chemin DTW entre les segments de la forme erronée et ceux de la forme corrigée.</p>
+        <p>Les cellules diagonales T1–T1, T2–T2, T3–T3 et T4–T4 sont ensuite reportées dans la seconde heatmap afin de suivre leur évolution dans la profondeur du réseau.</p>
+      </article>
+      <aside>
+        <h3>Correspondance</h3>
+        <div class="mapping"><span>T1–T1 → T1, couche 0</span><span>T2–T2 → T2, couche 0</span><span>T3–T3 → T3, couche 0</span><span>T4–T4 → T4, couche 0</span></div>
+      </aside>
+    </div>
+  </section>
+  
+  <section class="section" id="patterns-summary">
+
+    <div class="section-heading">
+      <p class="eyebrow">Jeu de données</p>
+      <h2>Distribution des paires de patterns tonals</h2>
+
+      <p>
+        Le tableau ci-dessous présente les différentes paires de patterns
+        ERR–CORR observées dans la catégorie <strong>SUBSTITUTION</strong>.
+        Pour chaque paire, il indique la position tonale modifiée, le contraste
+        tonal correspondant et le nombre de paires disponibles.
+      </p>
+    </div>
+
+    <figure class="dataset-table">
+      <a href="substitution_pattern_pair_counts.png" target="_blank">
+        <img
+          src="substitution_pattern_pair_counts.png"
+          alt="Distribution des paires de patterns tonals pour SUBSTITUTION"
+        >
+      </a>
+
+      <figcaption>
+        Distribution des paires de patterns ERR–CORR dans la catégorie
+        SUBSTITUTION. Cliquer sur l'image pour l'afficher en taille réelle.
+      </figcaption>
+    </figure>
+
+  </section>
+
+  <section class="cta"><h2>Consulter toutes les heatmaps</h2><a class="button primary" href="explorer.html">Ouvrir l’explorateur</a></section>
+</main>
+<footer>DTW Representation Explorer</footer>
+</body>
+</html>

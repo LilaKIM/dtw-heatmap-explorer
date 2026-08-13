@@ -31,6 +31,28 @@
 .segmentation-item header{margin-bottom:10px}
 .segmentation-item h3{margin:3px 0;font-size:.96rem}
 .segmentation-item p{margin:0;color:var(--muted);font-size:.8rem}
+.dataset-table {
+    margin: 35px auto 0;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.dataset-table img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.dataset-table figcaption {
+    margin-top: 12px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
 @media(max-width:760px){.stats-grid{grid-template-columns:1fr 1fr}.heading-actions{width:100%}.heading-actions .button{flex:1}}
 
 @media(max-width:950px){.figure-flow{grid-template-columns:1fr}.flow-arrow span{display:inline-block;transform:rotate(90deg)}.filters{grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:1/-1}.explanation{grid-template-columns:1fr}}
